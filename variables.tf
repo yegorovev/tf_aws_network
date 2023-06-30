@@ -9,3 +9,29 @@ variable "vpc_name" {
   type        = string
   nullable    = false
 }
+
+variable "subnets_list" {
+  description = "List of VPS subnets"
+  type = list(object({
+    subnet_cidr  = string
+    subnet_name  = string
+    zone         = string
+    is_public_ip = bool
+  }))
+  default = []
+}
+
+variable "igw_name" {
+  description = "IGW tag name"
+  type        = string
+  nullable    = false
+}
+
+variable "application_sg" {
+  description = "Custom security groups for application. cidr_blocks must be separated by a comma"
+  type = list(object({
+    sg_name = string
+    rules   = list(map(string))
+  }))
+  default = []
+}
