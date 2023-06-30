@@ -4,3 +4,32 @@ module "vpc" {
   vpc_cidr = var.vpc_cidr
   vpc_name = var.vpc_name
 }
+
+# Subnets
+module "subnets" {
+  source = "github.com/yegorovev/tf-aws-subnets.git"
+  count  = length(var.subnets_list)
+
+  vpc_id       = module.vpc.vpc_id
+  subnet_cidr  = var.subnets_list[count.index].subnet_cidr
+  subnet_name  = var.subnets_list[count.index].subnet_name
+  zone         = var.subnets_list[count.index].zone
+  is_public_ip = var.subnets_list[count.index].is_public_ip
+}
+
+# Internet gateway
+module "igw" {
+  source   = "github.com/yegorovev/tf-aws-igw.git"
+  vpc_id   = module.vpc.vpc_id
+  igw_name = var.igw_name
+}
+
+# Security groups
+module "sg" {
+  count  = length(var.application_sg)
+  source = "github.com/yegorovev/tf-aws-sg.git"
+
+  sg_name = var.application_sg[count.index].sg_name
+  vpc_id  = module.vpc.vpc_id
+  rules   = var.application_sg[count.index].rules
+}
