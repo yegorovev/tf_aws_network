@@ -1,8 +1,10 @@
 # VPC
 module "vpc" {
-  source   = "github.com/yegorovev/tf-aws-vpc.git"
-  vpc_cidr = var.vpc_cidr
-  vpc_name = var.vpc_name
+  source = "github.com/yegorovev/tf-aws-vpc.git"
+
+  vpc_cidr             = var.vpc_cidr
+  vpc_name             = var.vpc_name
+  enable_dns_hostnames = var.enable_dns_hostnames
 }
 
 # Subnets
@@ -19,7 +21,8 @@ module "subnets" {
 
 # Internet gateway
 module "igw" {
-  source   = "github.com/yegorovev/tf-aws-igw.git"
+  source = "github.com/yegorovev/tf-aws-igw.git"
+
   vpc_id   = module.vpc.vpc_id
   igw_name = var.igw_name
 }
