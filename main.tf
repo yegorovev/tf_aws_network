@@ -12,18 +12,19 @@ module "subnets" {
   source = "github.com/yegorovev/tf-aws-subnets.git"
   count  = length(var.subnets_list)
 
-  vpc_id       = module.vpc.vpc_id
+  vpc_id       = module.vpc.vpc.id
   subnet_cidr  = var.subnets_list[count.index].subnet_cidr
   subnet_name  = var.subnets_list[count.index].subnet_name
   zone         = var.subnets_list[count.index].zone
   is_public_ip = var.subnets_list[count.index].is_public_ip
 }
 
+
 # Internet gateway
 module "igw" {
   source = "github.com/yegorovev/tf-aws-igw.git"
 
-  vpc_id   = module.vpc.vpc_id
+  vpc_id   = module.vpc.vpc.id
   igw_name = var.igw_name
 }
 
@@ -33,6 +34,6 @@ module "sg" {
   source = "github.com/yegorovev/tf-aws-sg.git"
 
   sg_name = var.application_sg[count.index].sg_name
-  vpc_id  = module.vpc.vpc_id
+  vpc_id  = module.vpc.vpc.id
   rules   = var.application_sg[count.index].rules
 }
