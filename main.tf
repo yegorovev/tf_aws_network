@@ -33,7 +33,8 @@ module "sg" {
   count  = length(var.application_sg)
   source = "github.com/yegorovev/tf-aws-sg.git"
 
-  sg_name = var.application_sg[count.index].sg_name
-  vpc_id  = module.vpc.vpc.id
-  rules   = var.application_sg[count.index].rules
+  sg_name        = var.application_sg[count.index].sg_name
+  sg_description = var.application_sg[count.index].sg_description
+  vpc_id         = module.vpc.vpc.id
+  rules          = var.application_sg[count.index].rules
 }

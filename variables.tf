@@ -30,8 +30,9 @@ variable "igw_name" {
 variable "application_sg" {
   description = "Custom security groups for application. cidr_blocks must be separated by a comma"
   type = list(object({
-    sg_name = string
-    rules   = list(map(string))
+    sg_name        = string
+    sg_description = string
+    rules          = list(map(string))
   }))
   default = []
 }
