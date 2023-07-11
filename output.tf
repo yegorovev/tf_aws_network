@@ -17,3 +17,8 @@ output "igw" {
 output "sg" {
   value = module.sg
 }
+
+# Default route table
+output "sg" {
+  value = module.default_rt
+}
