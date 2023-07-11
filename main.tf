@@ -38,3 +38,11 @@ module "sg" {
   vpc_id         = module.vpc.vpc.id
   rules          = var.application_sg[count.index].rules
 }
+
+# Default route table
+module "default_rt" {
+  source = "github.com/yegorovev/tf_default_rt.git"
+
+  default_route_table_id = module.vpc.vpc.default_route_table_id
+  igw_id                 = module.igw.igw.id
+}
