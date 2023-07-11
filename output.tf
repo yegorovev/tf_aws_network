@@ -19,6 +19,6 @@ output "sg" {
 }
 
 # Default route table
-output "sg" {
+output "default_rt" {
   value = module.default_rt
 }
