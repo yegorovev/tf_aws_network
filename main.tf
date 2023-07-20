@@ -58,4 +58,8 @@ module "rt" {
   subnet_name = var.rt[count.index].subnet_name
   subnet_id   = var.rt[count.index].subnet_id
   gateway_id  = var.rt[count.index].gateway_id
+
+  depends_on = [
+    module.subnets
+  ]
 }
