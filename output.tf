@@ -22,3 +22,8 @@ output "sg" {
 output "default_rt" {
   value = module.default_rt
 }
+
+# Route tables
+output "rt" {
+  value = module.rt
+}
