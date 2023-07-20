@@ -11,7 +11,7 @@ variable "vpc_name" {
 }
 
 variable "subnets_list" {
-  description = "List of VPS subnets"
+  description = "List of VPC subnets"
   type = list(object({
     subnet_cidr  = string
     subnet_name  = string
@@ -42,4 +42,14 @@ variable "enable_dns_hostnames" {
   type        = bool
   default     = false
   nullable    = false
+}
+
+variable "rt" {
+  description = "List of route tables"
+  type = list(object({
+    name        = string
+    subnet_zone = string
+    subnet_name = string
+  }))
+  default = []
 }
