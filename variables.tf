@@ -50,6 +50,8 @@ variable "rt" {
     name        = string
     subnet_zone = string
     subnet_name = string
+    gateway_id  = string
+    subnet_id   = string
   }))
   default = []
 }

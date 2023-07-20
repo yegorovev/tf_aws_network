@@ -56,4 +56,6 @@ module "rt" {
   name        = var.rt[count.index].name
   subnet_zone = var.rt[count.index].subnet_zone
   subnet_name = var.rt[count.index].subnet_name
+  subnet_id   = var.rt[count.index].subnet_id
+  gateway_id  = var.rt[count.index].gateway_id
 }
