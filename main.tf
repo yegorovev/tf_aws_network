@@ -71,7 +71,7 @@ module "route_table_associations" {
 
 # Routes
 module "routes" {
-  source = "git@github.com:yegorovev/tf_aws_route.git?ref=v1.0.0"
+  source = "git@github.com:yegorovev/tf_aws_route.git?ref=v1.0.1"
   count  = length(var.routes)
 
   vpc_id                 = module.vpc.vpc.id
