@@ -1,5 +1,5 @@
 # VPC
-output "vpс" {
+output "vpc" {
   value = module.vpc
 }
 

@@ -44,8 +44,8 @@ module "security_groups" {
 module "route_tables" {
   source = "git@github.com:yegorovev/tf_aws_route_table.git?ref=v1.0.0"
 
-  vpc_id      = module.vpc.vpc.id
-  route_tables        = var.rt
+  vpc_id       = module.vpc.vpc.id
+  route_tables = var.rt
 
   depends_on = [
     module.subnets
@@ -58,7 +58,7 @@ module "route_table_associations" {
   count  = length(var.rt_associations)
 
   vpc_id      = module.vpc.vpc.id
-  rt_name        = var.rt_associations[count.index].rt_name
+  rt_name     = var.rt_associations[count.index].rt_name
   subnet_zone = var.rt_associations[count.index].subnet_zone
   subnet_name = var.rt_associations[count.index].subnet_name
   subnet_id   = var.rt_associations[count.index].subnet_id
@@ -74,9 +74,9 @@ module "routes" {
   source = "git@github.com:yegorovev/tf_aws_route.git?ref=v1.0.0"
   count  = length(var.routes)
 
-  vpc_id      = module.vpc.vpc.id
-  rt_name        = var.routes[count.index].rt_name
-  igw_name = var.routes[count.index].igw_name
+  vpc_id                 = module.vpc.vpc.id
+  rt_name                = var.routes[count.index].rt_name
+  igw_name               = var.routes[count.index].igw_name
   destination_cidr_block = var.routes[count.index].destination_cidr_block
   network_interface_id   = var.routes[count.index].network_interface_id
 
