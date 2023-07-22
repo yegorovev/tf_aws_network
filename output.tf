@@ -9,21 +9,26 @@ output "subnets" {
 }
 
 # Internet gateway
-output "igw" {
-  value = module.igw
+output "internet_gateway" {
+  value = module.internet_gateway
 }
 
 # Security groups
-output "sg" {
-  value = module.sg
-}
-
-# Default route table
-output "default_rt" {
-  value = module.default_rt
+output "security_groups" {
+  value = module.security_groups
 }
 
 # Route tables
-output "rt" {
-  value = module.rt
+output "route_tables" {
+  value = module.route_tables
+}
+
+# Route tables associations
+output "route_table_associations" {
+  value = module.route_table_associations
+}
+
+# Routes
+output "routes" {
+  value = module.routes
 }

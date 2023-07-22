@@ -46,12 +46,18 @@ variable "enable_dns_hostnames" {
 
 variable "rt" {
   description = "List of route tables"
-  type = list(object({
-    name        = string
-    subnet_zone = string
-    subnet_name = string
-    gateway_id  = string
-    subnet_id   = string
-  }))
+  type = list(map(string))
+  default = []
+}
+
+variable "rt_associations" {
+  description = "List of route table associations"
+  type = list(map(string))
+  default = []
+}
+
+variable "routes" {
+  description = "List of routs"
+  type = list(map(string))
   default = []
 }
